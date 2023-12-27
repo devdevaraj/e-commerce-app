@@ -25,6 +25,11 @@ const schema = new mongoose.Schema({
         type: Array,
         required: false,
         unique: false
+    },
+    category: {
+        type: String,
+        required: true,
+        unique: false
     }
 });
 

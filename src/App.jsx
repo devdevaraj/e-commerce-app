@@ -14,6 +14,8 @@ import Profile from "./page/Profile";
 import PageNotFound from "./page/PageNotFound";
 import { getProfile } from "./helpers/request";
 import { Auth } from "./middlewares/auth";
+import { Seller } from './middlewares/seller';
+import AddProducts from './page/addProducts';
 config();
 
 function App() {
@@ -52,6 +54,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Auth><Profile /></Auth>} />
+              <Route path="/profile/add-products" element={<Seller><AddProducts /></Seller>} />
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </Suspense>

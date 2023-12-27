@@ -27,3 +27,10 @@ export function loginValidate(values) {
     }
     return errors;
 }
+
+export function productValidate(values) {
+    const errors = {};
+    if(!values.title) {
+        errors.username = toast.error("Username cannot be empty!")
+    }
+}

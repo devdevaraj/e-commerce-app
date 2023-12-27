@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({
-    limit: "5mb"
+    limit: "15mb"
 }))
 app.use(express.static(path.resolve("./dist")));
 app.use("/api", router);

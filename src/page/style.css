@@ -1,7 +1,10 @@
-.form-container input, .form-container select {
+.form-container input, .form-container select, .form-container textarea {
     width: 12rem;
 }
-.form-container input[type="file"] {
+.form-container textarea {
+    height: 6rem;
+}
+.form-container input[type="file"]:first-of-type {
     display: none;
 }
 .form-container img {
