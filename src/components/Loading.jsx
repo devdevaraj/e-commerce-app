@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import "./loading.css";
 
@@ -10,4 +10,4 @@ function Loading() {
   )
 }
 
-export default Loading
+export default memo(Loading);

@@ -5,6 +5,7 @@ import { convertToBase64 } from "../helpers/convert";
 import { addProducts } from "../helpers/request";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import "./style.css";
 
 function AddProducts() {
     const thumbRef = useRef();

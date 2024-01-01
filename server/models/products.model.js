@@ -30,6 +30,11 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
         unique: false
+    },
+    sellerId: {
+        type: String,
+        required: true,
+        unique: false
     }
 });
 

@@ -4,15 +4,17 @@ export async function addProduct(req, res) {
     try {
         let { title, stock, description, category } = req.body;
         let { thumbnail, images } = req.files;
+        let { userId } = req.user;
         thumbnail = thumbnail[0].filename;
-        images = images.map(item => item.filename);
+        images = images?.map(item => item.filename);
         await productsModel.create({
             title,
             thumbnail,
             stock,
             description,
             images,
-            category
+            category,
+            sellerId: userId
         })
         return res.status(201).json({
             msg: "Data resived!"
@@ -27,17 +29,18 @@ export async function addProduct(req, res) {
 
 export async function getProducts(req, res) {
     try {
-        let { limit, sort, skip, category, select } = req.query;
+        let { limit, sort, skip, category, select, sellerId, id } = req.query;
         limit = limit ? limit : 100;
         sort = sort ? sort : "title";
         skip = skip ? skip : 0;
-        category = category ? {category} : {};
+        let filter = category ? {category} : {};
+        filter = sellerId ? {...filter, sellerId } : filter;
+        filter = id ? {...filter, _id: id } : filter;
         select = select ? {[select]:1} : {};
-        let products = await productsModel.find(category,select).limit(limit).skip(skip).sort({ [sort]: 1 });
+        let products = await productsModel.find(filter,select).limit(limit).skip(skip).sort({ [sort]: 1 });
         if(products.length == 0) {
             return res.status(204).json({
-                msg: "There is no products to show!",
-                products
+                msg: "There is no products to show!"
             })
         }
         return res.status(200).json({
